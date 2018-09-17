@@ -1,1 +1,1 @@
-### Pontos Turisticos API
+### Restful API for studying purposes
