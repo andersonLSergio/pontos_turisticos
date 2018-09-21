@@ -17,12 +17,19 @@ from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
 from core.api.viewsets import PontoTuristicoViewSet
-from atracoes.api.viewsets import AtracoesViewSet
+from atracoes.api.viewsets import AtracaoViewSet
+from avaliacoes.api.viewsets import AvaliacaoViewset
+from comentarios.api.viewsets import ComentarioViewset
+from enderecos.api.viewsets import EnderecoViewset
 
 
 router = routers.DefaultRouter()
 router.register(r'pontoturistico', PontoTuristicoViewSet)
-router.register(r'atracoes', AtracoesViewSet)
+router.register(r'atracoes', AtracaoViewSet)
+router.register(r'avaliacoes', AvaliacaoViewset)
+router.register(r'comentarios', ComentarioViewset)
+router.register(r'enderecos', EnderecoViewset)
+# implementar os outros endpoints (Serializer -> Viewset -> Router)
 
 urlpatterns = [
     path('', include(router.urls)),
