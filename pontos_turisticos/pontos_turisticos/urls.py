@@ -29,7 +29,6 @@ router.register(r'atracoes', AtracaoViewSet)
 router.register(r'avaliacoes', AvaliacaoViewset)
 router.register(r'comentarios', ComentarioViewset)
 router.register(r'enderecos', EnderecoViewset)
-# implementar os outros endpoints (Serializer -> Viewset -> Router)
 
 urlpatterns = [
     path('', include(router.urls)),
