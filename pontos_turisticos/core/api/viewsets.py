@@ -13,7 +13,28 @@ class PontoTuristicoViewSet(ModelViewSet):
     serializer_class = PontoTuristicoSerializer
 
     def get_queryset(self):
-        return PontoTuristico.objects.filter(aprovado=True)
+        id = self.request.query_params.get('id', None)
+        nome = self.request.query_params.get('nome', None)
+        descricao = self.request.query_params.get('descricao', None)
+        # prepares the statement to get all from the database (lazyload)
+        # lazyload doesn't retrieve data itself, it only prepares the statement
+        # so it's okay to keep it here
+        queryset = PontoTuristico.objects.all()
+
+        if id:
+            # if it's given an id (primary key), we want to get just one occurency from the db
+            queryset = PontoTuristico.objects.filter(pk=id)
+        
+        if nome:
+            # if it's given this param, the filter is applied
+            queryset = queryset.filter(nome=nome)
+
+        if descricao:
+            # if it's given this param, the filter is applied
+            queryset = queryset.filter(descricao=descricao)
+
+        # this is when the data is actually retrieved with all the rules applied earlier
+        return queryset
 
     #GET ACTION
     def list(self, request, *args, **kwargs):
