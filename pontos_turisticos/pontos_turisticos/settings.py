@@ -124,3 +124,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# This is where the media files will be uploaded to (created automatically)
+MEDIA_ROOT = 'imagens'
+
+MEDIA_URL = '/media/'
+
+
